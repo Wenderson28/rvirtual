@@ -155,7 +155,7 @@ public class Alunos extends Controller{
 		render(requerimentos, usuarios, usuario);
 		}
 	
-		public static void Contato(){
+		public static void contato(){
 			List<Usuario> usuarios = Usuario.findAll();
 			render(usuarios);
 		}

@@ -38,7 +38,7 @@ buttom
 </style>
 <body>
 	<h3>Editar Dados</h3>
-	<form action="@{Alunos.salve()}" method="post" enctype="multipart/form-data">
+	<form id="ff01" action="@{Alunos.salve()}" method="post" enctype="multipart/form-data">
 		<div id="gg5">
 			<div id="rr02">
 				<input type="hidden" name="usuario.id" value="${usuario?.id}">
@@ -78,11 +78,11 @@ buttom
 				#{/if}
 			</div>
 
-		<div id="b1">
-			<button type="submit" class="btn btn-success" value="Atualizar">Atualizar</button>
-		</div>
+
 		</div>
 	</form>
+
+	<button form="ff01" type="submit" class="btn btn-success" value="Atualizar">Atualizar</button>
 
 	<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 

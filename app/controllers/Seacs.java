@@ -215,8 +215,9 @@ public class Seacs extends Controller{
 		render(usuarios);
 	}
 	
-	public static void Contato() {
-		render();
+	public static void contato() {
+		List<Usuario> usuarios = Usuario.findAll();
+		render(usuarios);
 	}
 		
 	
