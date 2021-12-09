@@ -1,0 +1,195 @@
+#{extends 'main3.html' /} #{set title:'Editar'/}
+
+
+<style>
+#esp01 {
+	margin-top: 30px;
+}
+
+.neg01 {
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.hh7 {
+	display: flex;
+}
+
+#neg02 {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+textarea {
+	width: 460px;
+	height: 200px;
+	resize: none;
+}
+
+#sel{
+	margin:5px;
+	
+}
+.colaz p{
+	margin: 0;
+	margin-top: 15px;
+	color: #0D6EFD;
+}
+
+.colaz hr {
+	margin-top: 0;
+	margin-botom: 10px;
+	color: #0D6EFD;
+}
+#fty01 {
+	display: flex;
+}
+
+#hew01 {
+	position: fixed;
+	right: 50px;
+    top: 110px;
+}
+#mamamia {
+
+	width: 500px;
+	word-wrap: break-word;
+
+}
+</style>
+
+<body>
+		<div class="parte03">
+			<div id="fty01">
+				<h3>Requerimento do Aluno - N&#186; ${requerimento.id}</h3>
+				<div id="hew01">
+				#{if requerimento?.sit == "INDEFERIR"}
+					<h6 style="color: red;">INDEFERIDO</h6>
+				#{/if}
+				#{if requerimento?.sit == "DEFERIR"}
+					<h6 style="color: green;">DEFERIDO</h6>
+				#{/if}
+				#{if requerimento?.sit == null || requerimento?.sit == "ENCAMINHAR"}
+					<h6 style="color: blue;">EM AN&Aacute;LISE</h6>
+				#{/if}
+				</div>
+			</div>
+			<div>
+				<div id="esp01">
+					<div class="colaz">
+						<p>Dados Pessoais</p>
+						<hr>
+					</div>
+					<div>
+						<div class="hh7">
+							<p class="neg01">Nome: </p> ${requerimento.nome}
+						</div>
+						<div class="hh7">
+							<p class="neg01">Matricula: </p> ${requerimento.matricula}
+						</div>
+						<div class="colaz">
+							<p>Requerimento</p>
+							<hr>
+						</div>
+						<div class="hh7">
+							<p class="neg01">Motivo: </p> ${requerimento.motivo} 
+							#{if requerimento?.outro} - ${requerimento.outro} #{/if}
+							
+						</div>
+						
+						#{if requerimento?.motivo == "Justificativa de Faltas"}
+						<div class="hh7">						
+								#{if requerimento?.data}<p class="neg01">Data: </p> ${requerimento.data} #{/if}
+								#{if requerimento?.data2} - ${requerimento.data2} #{/if}
+						</div>
+						<div class="hh7">	
+								#{if requerimento?.nomeTipo} <p class="neg01">Tipo: </p> ${requerimento.nomeTipo} #{/if}
+								#{if requerimento?.nomeTipo2} - ${requerimento.nomeTipo2} #{/if}
+						</div>
+						<div class="hh7">		
+								#{if requerimento?.nomeDisc} <p class="neg01">Disciplina: </p> ${requerimento.nomeDisc} #{/if}
+								#{if requerimento?.nomeDisc2} - ${requerimento.nomeDisc2} #{/if}
+						</div>
+						<div class="hh7">	
+								#{if requerimento?.nomeProf} <p class="neg01">Professor: </p> ${requerimento.nomeProf} #{/if}
+								#{if requerimento?.nomeProf2} - ${requerimento.nomeProf2}#{/if}				
+						</div>
+						#{/if}
+						
+						#{if requerimento?.requerimento_anexado}
+							<div class="hh7">
+								<p class="neg01">Comprovante: </p> 
+									
+									<a href="../uploads/${requerimento?.requerimento_anexado}" title="Clique para abrir" target="_blank">
+									Visualizar
+									<span class="iconify" data-icon="akar-icons:eye-open"></span>
+									</a>										
+								
+							</div>
+						#{/if}
+
+					<div id="mamamia">
+					<p id="neg02">Descri&ccedil;&atilde;o: </p> ${requerimento.textarea}
+					
+					</div>
+					#{if requerimento?.motivo2}
+					<div class="colaz">
+						<p>Requerimento (2)</p>
+						<hr>
+					</div>
+						<div>
+							
+							<div class="hh7">
+								<p class="neg01">Motivo (2): </p> 							 
+									${requerimento.motivo2} 		
+									#{if requerimento?.outro2}
+									 - ${requerimento.outro2} 
+									#{/if}												
+							</div>	
+											
+							#{if requerimento?.motivo2 == "Justificativa de Faltas"}
+							<div class="hh7">
+								#{if requerimento?.data3}<p class="neg01">Data: </p> ${requerimento.data3} #{/if}
+								#{if requerimento?.data4} - ${requerimento.data4} #{/if}
+							</div>
+						<div class="hh7">	
+								#{if requerimento?.nomeTipo3}<p class="neg01">Tipo: </p> ${requerimento.nomeTipo3} #{/if}
+								#{if requerimento?.nomeTipo4} - ${requerimento.nomeTipo4} #{/if}
+							</div>
+						<div class="hh7">	
+								#{if requerimento?.nomeDisc3}<p class="neg01">Disciplina: </p> ${requerimento.nomeDisc3} #{/if}
+								#{if requerimento?.nomeDisc4} - ${requerimento.nomeDisc4} #{/if}
+								</div>
+						<div class="hh7">	
+								#{if requerimento?.nomeProf3} <p class="neg01">Professor: </p> ${requerimento.nomeProf3} #{/if}
+								#{if requerimento?.nomeProf4} - ${requerimento.nomeProf4}#{/if}												
+							</div>
+							#{/if}
+							
+							
+							#{if requerimento?.requerimento_anexado2}
+							<div class="hh7">
+									<p class="neg01">Comprovante (2): </p>
+									<a  href="../uploads/${requerimento?.requerimento_anexado2}" title="Clique para abrir" target="_blank">
+									Visualizar<span class="iconify" data-icon="akar-icons:eye-open"></span>
+									</a>
+							</div>
+							#{/if}
+							<div id="mamamia">
+							<p id="neg02">Descri&ccedil;&atilde;o (2): </p> ${requerimento.textarea2}
+							</div>
+					</div>
+					
+					#{/if}
+					
+				</div>			
+			</div>
+		</div>
+	</div>
+			
+	
+	<script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+	<script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+	<script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+
+</body>

@@ -1,0 +1,81 @@
+#{extends 'main3.html'/} #{set title:'Pagina Inicial'/}
+<style>
+#dei {
+	display: flex;
+}
+
+.novo {
+	padding-top: 50px;
+	padding-left: 70px;
+}
+
+#novo1 {
+	padding-left: 0px;
+}
+
+.novo a {
+	background-color: white;
+	border: solid 1px #082336E0;
+	color: #082336;
+	text-decoration: none;
+	display: flex;
+	width: 163px;
+	height: 200px;
+	border-radius: 5px;
+	align-items: center;
+	justify-content: center;
+}
+
+.novo a:hover {
+	color: #0D6EFD;
+	border: solid 1px #0D6EFD;
+}
+
+#ali {
+	display: block;
+	text-align: center;
+}
+
+#ali .iconify {
+	padding-top: 10px;
+	font-size: 40px;
+	color: #082336E0;
+}
+
+#dei .novo a:hover .iconify {
+	color: #0D6EFD;
+}
+
+#cen {
+	display: flex;
+	margin: 0px auto;
+}
+</style>
+
+<body>
+
+	<h3>Seja bem-vindo, ${session.get("nomeUsuario")}!</h3>
+	<div id="dei">
+		<div id="cen">
+			<div class="novo" id="novo1">
+				<a href="@{Professores.listarEnc}">
+					<div id="ali">
+						<p>REQUERIMENTOS PARA PROCESSO</p>
+						<span class="iconify" data-icon="carbon:add-filled"
+							data-inline="false"></span>
+					</div>
+				</a>
+			</div>
+			<div class="novo">
+				<a href="@{Professores.encReq}">
+					<div id="ali">
+						<p>REQUERIMENTOS FINALIZADOS</p>
+						<span class="iconify" data-icon="ic:baseline-pending-actions"></span>
+					</div>
+				</a>
+			</div>
+
+		</div>
+	</div>
+
+</body>

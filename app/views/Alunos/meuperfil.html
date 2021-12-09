@@ -1,0 +1,185 @@
+#{extends 'main2.html' /} #{set title:'RV - Meu Perfil'/}
+
+<style>
+#for01 {
+	margin-top: 30px;
+	display: flex;
+}
+
+#for01 input {
+	width: 240%;
+}
+
+#fr01 {
+	display: block;
+	width: 750px;
+}
+
+#fr02 {
+	display: block;
+	
+}
+
+#env01 {
+	margin-top: 20px;
+}
+
+#butt01 {
+	margin-top: 20px;
+}
+
+#img66 {
+	width: 500px;
+}
+
+#img66 img {
+	margin-left: auto;
+}
+#ima{
+  display:auto;
+  width: 200px;
+  height: 200px;
+  
+}
+
+hr{
+	margin: 5px;
+}
+.msgConc {
+	font-size: 18px;
+	text-align: center;
+	background-color: #3DE6AF;
+	color: blue;
+	margin: 10px;
+}
+</style>
+<script>
+	function show() {
+		var senha = document.getElementById("validationTooltip03");
+		if (senha.type === "password") {
+			senha.type = "text";
+		} else {
+			senha.type = "password";
+		}
+	}
+	function previewImagem() {
+		var imagem = document.querySelector('input[name=foto]').files[0];
+		var preview = document.getElementById("img66").querySelector('img');
+		var reader = new FileReader();
+		reader.onloadend = function() {
+			preview.src = reader.result;
+		}
+		if (imagem) {
+			reader.readAsDataURL(imagem);
+		} else {
+			preview.src = "";
+		}
+	}
+</script>
+#{if flash.success}
+		<div class="msgConc">
+			<p>${flash.success}</p>
+		</div>
+	#{/if}
+<h3>Informa&ccedil;&otilde;es Pessoais</h3>
+
+<div class="form-row">
+	<div id="for01">
+		<div id="fr01">
+			<div class="col-md-4 mb-3">
+				<label for="validationTooltip01">Nome Completo: </label> <input
+					type="text" class="form-control" id="validationTooltip01"
+					value='${session.get("nomeUsuario")}' placeholder="Nome completo"
+					required readonly>
+			</div>
+			<div id="fx01">
+				<div class="col-md-4 mb-3">
+					<label for="validationTooltip02">Matricula: </label> <input
+						type="text" class="form-control" id="validationTooltip02"
+						value='${session.get("matriculaUsuario")}' placeholder="Matricula"
+						required readonly>
+				</div>
+			</div>
+
+			<div id="fx01">
+				<div class="col-md-4 mb-3">
+					<label for="validationTooltip02">Curso: </label> 
+					#{list items:usuarios, as: 'usuario'} 
+					#{if usuario?.matricula == session.get("matriculaUsuario") && usuario?.curso == null} <input
+						type="text" class="form-control" id="validationTooltip02"
+						value='${session.get("UsuarioCurso")}'
+						placeholder="Nao registrado" required readonly> #{/if}
+					#{if usuario?.matricula == session.get("matriculaUsuario") && usuario?.curso != null} 
+					<input type="text" class="form-control" id="validationTooltip02" value='${session.get("UsuarioCurso")}'	placeholder="Faca login novamente" required readonly>
+					#{/if} 
+					#{/list}
+				</div>
+			</div>
+
+		</div>
+		<div id="fr02">
+			#{list items:usuarios, as: 'usuario'} 
+			#{if usuario?.matricula == session.get("matriculaUsuario") && usuario.fotoperfil == null}
+			<form action="@{Alunos.salve()}" method="post" enctype="multipart/form-data" id="myform">
+				<input type="hidden" name="usuario.id" value="${usuario?.id}">
+				<div class="col-md-4 mb-3" id="col01">
+
+
+					<label for="validationTooltip06">Sua Foto: </label> <input
+						type="file" accept="image/*" name="foto" class="form-control"
+						id="imagem" placeholder="Comprovante" onchange="previewImagem()">
+					#{if usuario?.id}
+					 <a href="../uploads/${Usuario?.fotoperfil}"></a>
+					#{/if}
+
+
+				</div>
+				<div id="img66">
+					<img id="fimg" width="150px" border="1" align="center">
+				</div>
+				<button class="btn btn-success" id="env01" type="submit" form="myform">Salvar foto do perfil</button>
+			</form>			
+			#{/if}
+			
+			#{if usuario?.matricula == session.get("matriculaUsuario") && usuario.fotoperfil != null}
+			
+			
+			
+			<figcaption align="center">Foto do Perfil</figcaption>
+			<hr>
+			<img src="../uploads/${usuario.fotoperfil}" title="Perfil" id="ima" class="img-thumbnail"/>
+			<hr>
+			
+			
+			#{/if}
+			#{/list}
+		</div>
+	</div>
+	#{list items:usuarios, as: 'usuario'} 
+	#{if usuario?.matricula == session.get("matriculaUsuario")} 
+	<a href="@{Alunos.editar(usuario.id)}"><button class="btn btn-primary" id="butt01">Editar Dados</button></a> 
+	#{/if} 
+	#{/list}
+	
+</div>
+
+
+
+
+
+<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+	crossorigin="anonymous"></script>

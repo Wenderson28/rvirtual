@@ -1,0 +1,128 @@
+#{extends 'main2.html' /} #{set title:'RV - Requerimentos em Análise'/}
+<style>
+
+h1 {
+	text-aligner: center;
+}
+
+#req01 {
+	text-align: center;
+	margin-top: 40px;
+}
+
+form {
+	display: flex;
+}
+
+#req02 {
+	text-align: center;
+	margin-top: 40px;
+}
+
+iframe {
+	width: 100px;
+	height: 100px;
+}
+
+h1 {
+	margin-top: 10px;
+}
+.pagination {
+  display: flex;
+  
+}
+
+.pagination a {
+  text-align:center;
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+td {
+	overflow: hidden;
+	max-width: 300px;
+	word-wrap: break-word;
+}
+
+h1 {
+	margin-top: 10px;
+}
+
+table {
+	margin-top: 40px;
+} 
+#form51 {
+	margin-top: 40px;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+#but3 {
+	width: 110px;
+}
+
+</style>
+<body>
+		<div id="top"></div>
+		<h3>Requerimentos em An&aacute;lise</h3>
+		
+		<div id="form51">
+			<form class="form-inline my-2 my-lg-0" action="@{Alunos.sitReq_Ana}">
+		      <input name="busca" class="form-control mr-sm-2" type="search" placeholder="Pesquise o motivo do processo..." aria-label="Pesquisar">
+		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="but3"><span class="iconify" data-icon="cil:magnifying-glass"></span></button>
+		    </form>
+	    </div>
+	 <table class="table table-striped">
+			<thead>
+	
+				<tr>
+					<th scope="col">N&#186;</th>
+					<th scope="col">DATA</th>
+					<th scope="col">NOME/MATR&Iacute;CULA</th>
+					<th scope="col">CURSO</th>
+					<th scope="col">MOTIVO(S)</th>																		
+					<th scope="col">SITUA&Ccedil;&Atilde;O</th>
+					<th scope="col">ABRIR</th>
+				</tr>
+			</thead>
+			<tbody>
+			#{list items:requerimentos, as: 'requerimento'}
+			#{if session.get("matriculaUsuario") == requerimento.matricula && requerimento.sit == null}
+				<tr>
+					<td scope="row">${requerimento.id} &#186;</td>
+					
+					<td scope="row">${requerimento.timeStamp}</td>
+					<td scope="row">${requerimento.nome} - ${requerimento.matricula}</td>
+					<td scope="row">${requerimento.curso}</td>
+					<td scope="row">${requerimento.motivo} #{if requerimento?.outro} - ${requerimento.outro} #{/if}
+					#{if requerimento?.motivo2}
+					/
+					${requerimento.motivo2} (2) 
+						#{if requerimento?.outro2}
+						 - ${requerimento.outro2} 
+						#{/if}					
+					#{/if}
+					
+					#{if requerimento?.sit == null || requerimento?.sit == "ENCAMINHAR"}
+							<td style="color: blue; vertical-align:middle;">Em an&aacute;lise</td>
+					#{/if}
+						
+					
+					<td scope="row">
+						<a href="@{Alunos.edit2(requerimento.id)}"><button type="button" class="btn btn-xs btn-primary">Visualizar</button></a>
+					</td>
+								
+					
+				</tr>
+			
+			#{/if}
+			#{/list}
+			</tbody>	
+		
+		</table> 

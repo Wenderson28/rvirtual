@@ -1,0 +1,55 @@
+#{extends 'main2.html' /} #{set title:'RV - Sugestão'/}
+
+
+
+<style>
+
+
+textarea {
+	padding: 10px;
+	border-radius: 5px;
+}
+
+form button {
+	display: flex;
+}
+
+#form10 {
+	margin-top: 5%;
+}
+
+#exampleFormControlTextarea1{
+	height: 250px;
+}
+
+#but {
+	margin-top: 10px;
+}
+.msgConc {
+	font-size: 18px;
+	text-align: center;
+	background-color: #3DE6AF;
+	color: blue;
+	margin: 10px;
+}
+
+
+</style>
+<body>
+	#{if flash.success}
+	<div class='msgConc'>${flash.success}</div>
+	#{/if} 
+	<h3>Sugest&atilde;o</h3>
+<div id="form10">
+	<form action="@{Alunos.saveSugestao}" method="post">
+		<textarea name="usuario.sugestao" value="${Usuario?.sugestao}" class="form-control" id="exampleFormControlTextarea1" maxlength="300"
+			 placeholder="Deixe aqui sua sugest&atilde;o ou cr&iacute;tica!" rows= "3"></textarea>
+		
+		
+	
+		<button type="submit" class="btn btn-primary" id="but">Enviar</button>
+		<button type="reset" class="btn btn-danger" id="but">Apagar Tudo</button>
+	</form>
+</div>
+
+</body>

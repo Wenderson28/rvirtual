@@ -1,0 +1,64 @@
+<style>
+table{
+	 width: 30%;
+	 box-shadow: 10px 10px 10px black;
+	 
+	 margin: 0px auto; 
+	 position: relative;
+	 top: 20%; transform: 
+	 translateY(-70%);
+}
+body {
+    font-family:Bradley Hand, cursive, sans-serif;
+    
+}
+</style>
+<title>Centro de Requerimento</title>
+<body bgcolor="#7FC97F">
+	<hr color="white">
+	<h1 align="center">Centro de Requerimento Virtual</h1>
+	<hr color="white">
+	<br>
+	<br>
+	<h3 align="center">CLIQUE NO <font color="#A02B2D">ICONE</font> PARA CADASTRAR!!</h3>
+
+	<h1 align="center"><img src="https://image.flaticon.com/icons/png/512/37/37085.png" width="50px"></h1>
+	
+	<table border="1px" cellspacing="0" cellpadding="10" bgcolor="white">
+		<tr>
+			<td align="center"><b>ALUNOS</b></td>
+			<td align="center"><b>SERVIDOR</b></td>
+		</tr>
+		<tr align="center">
+			<td>
+				<a href="@{Alunos.form}"><img align="center" alt="Cadastrar Aluno" title="Cadastrar Aluno" src="https://www.unincor.br/images/imagens/icones-servicos/aluno-color.png" width="100px"></a>
+			</td>
+			<td>
+				<a href="@{Servidores.form}"><img alt="Cadastrar Servidor" title="Cadastrar Servidor" src="https://cdn.discordapp.com/attachments/834080657536843826/860925227223089192/001-professor.png"  width="100px"></a>
+			</td>
+		</tr>
+	</table>
+	<br><br><br><br><br><br>
+
+	<hr color=white>
+	<br>
+	<h3 align=center><a href="@{Alunos.listar}"><font color=black>Lista de Alunos Cadastrados</font></a></h3>
+	<h3 align=center><a href="@{Servidores.listar}"><font color=black>Lista de Servidores Cadastrados</font></a></h3>
+	
+</body>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>FONTES E CORES</title>
+</head>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+body {
+	height: 100%;
+	background-image: linear-gradient(to bottom, #826DB0, #FBF7F7, #BDE9C6);
+}
+h1 {
+	font-family: 'Otomanopee One';
+	text-align: center;
+}

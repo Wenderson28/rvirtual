@@ -1,0 +1,7 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+validation.required=Campo Obrigatorio!
+validation.unique=Matricula ja existe no sistema!!
+validation.minSize=O minimo são 6 numeros!
+validation.maxSize=O maximo são 15 numeros!

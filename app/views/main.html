@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>#{get 'title' /}</title>
+	<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/df2mgmM/Requerimento-Virtual.jpg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	
+</head>
+<style type="text/css">
+
+/*
+#3DE6AF - Verde
+#0D6EFD - Azul claro
+#082336 - Azul Escuro
+*/
+
+body {
+	background-color: #F4F6F9;
+}
+
+#parte01 {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	display: flex;
+	padding: 9px 20px 9px 15px;
+	background-color: white;
+	box-shadow: 0 1px 5px #F2F2F2;
+	z-index: 1;
+}
+
+#parte01 h3 {
+	color: #082336;
+	padding: 10px;
+}
+
+#parte01 h3 span {
+	color: #3DE6AF;
+}
+
+#parte01 img {
+	width: 75px;
+}
+
+
+.some-item:after {
+  	content: url('https://api.iconify.design/bx/bx-user-circle.svg');
+  	
+}
+
+#parte01 button {
+	margin-left: auto;
+	margin-top: 8px;
+	background: url('https://api.iconify.design/bx/bx-user-circle.svg') no-repeat center center / contain;
+	background-repeat: no-repeat;
+	background-size: 49px 50px;
+	height: 50px;  
+	width: 50px;
+	border-radius: 100%;
+	border: solid 1px;
+	
+}
+
+#parte01 button:hover {
+	box-shadow: 0px 0px 2px #082336;
+}
+
+#mostrar {
+	display: none;
+}
+
+.list-group {
+	position: fixed;
+	top: 85px;
+	right: 15px;
+	width: 180px;
+	text-align: center;
+	box-shadow: 0 1px 5px #F2F2F2;
+	z-index: 1;
+}
+
+#lov02 {
+	color: red;
+}
+
+#parte02 {
+	position: fixed;
+	top: 80px;
+	left: 0px;
+	bottom: 0px;
+	background-image: linear-gradient(to right, #082336, #082336E0);
+	width: 250px;
+	z-index: 2;
+}
+
+#parte02 ul {
+	list-style-type: none;
+	padding: 15px 0px 0px 0px;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#parte02 .iconify {
+	color: #3DE6AF;
+}
+
+#ico-3 {
+	font-size: 15px;
+}
+
+#ul01 {
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+}
+
+#parte02 ul a {
+	height: 30px;
+	width: 250px;
+	display: block;
+	padding: 0px 0px 0px 22px;
+}
+
+#parte02 ul p {
+	padding: 0px 0px 0px 20px;
+}
+
+#parte02 ul li a {
+	font-weight: 300;
+	height: 30px;
+	width: 250px;
+	display: block;
+	padding: 0px 0px 0px 45px;
+	color: white;
+	text-decoration: none;
+}
+
+#parte02 ul a:hover {
+	color: #082336;
+	background-color: #3DE6AF;
+}
+
+#parte02 ul a:hover .iconify {
+	color: #0D6EFD;
+}
+
+#parte03 {
+	color: black;
+	padding: 20px 50px 50px 50px;
+	z-index: -1;
+	margin: 80px auto auto 250px;
+}
+
+#parte03 h3{
+	color: #0D6EFD;
+}
+
+/*------------------------------------------------------------------------------*/
+#{get 'moreStyles' /}
+
+</style>
+<script type="text/javascript">
+	function ver() {
+		var topicos=document.getElementById("mostrar");
+
+		if(topicos.style.display === "inline"){
+			topicos.style.display="none";
+		}else {
+			topicos.style.display="inline";
+		}
+	}
+</script>
+<body>
+	<div id="parte01">
+		<img src="https://i.ibb.co/df2mgmM/Requerimento-Virtual.jpg">
+		<h3>REQUERIMENTO VIRTUAL - <span>SEAC</span></h3>
+		<button onclick="ver()"></button>
+	</div>
+	<div id="mostrar">
+		<div class="list-group">
+			<a class="list-group-item list-group-item-action active" aria-current="true">${session.get("nomeUsuario")}</a>
+		
+			<a href="@{Login.logout}" class="list-group-item list-group-item-action" id="lov02">
+				<span class="iconify" data-icon="mdi:logout"></span> Sair</a>
+		</div>
+	</div>
+	<div id="parte02">
+		<ul><a href="@{Seacs.inicio}" id="ul01"><span class="iconify" data-icon="ant-design:home-filled"></span>  Início</a></ul>
+		<ul><p><span class="iconify" data-icon="clarity:settings-solid"></span> Funcionalidades</p>
+		<li><a href="@{Seacs.listar_Requerimento}">Requerimentos P/ Processo</a></li>
+				<li><a href="@{Seacs.encReq}">Encaminhados</a></li>
+				<li><a href="@{Seacs.listarReq_Def}">Finalizados</a></li>
+				<li><a href="@{Seacs.listar}">Listagem de Usuarios</a></li>
+	
+		</ul>
+		<ul><p><span class="iconify" data-icon="whh:support" id="ico-3"></span> Suporte</p>
+			<li><a href="@{Seacs.contato}">Contato</a></li>
+			<li><a href="@{Seacs.sugestao}">Sugestão</a></li>
+		</ul>
+	</div>
+	<div id="parte03">
+		#{doLayout /}
+	</div>
+	<script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+
+	<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

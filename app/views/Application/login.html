@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Página De Login</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/df2mgmM/Requerimento-Virtual.jpg">
+
+<style type="text/css">
+/*
+#3DE6AF - Verde
+#0D6EFD - Azul claro
+#082336 - Azul Escuro
+*/
+
+body {
+	background-image: linear-gradient(to right, #082336, #082336E0);
+}
+
+form {
+	background-color: white;
+	border-color: red;
+	height: 300px;
+	width: 400px;
+	margin: 150px auto 150px auto;
+	border-radius: 10px;
+	box-shadow: 0px 0px 5px;
+	display: grid;
+}
+
+form h1 {
+	color: #0D6EFD;
+}
+
+input {
+	padding: 7px;
+}
+
+#ipt01 {
+	margin: 20px 20px 7px 20px;
+	border-color: #2C6E99;
+}
+
+#ipt02 {
+	margin: 0px 20px 10px 20px;
+	border-color: #2C6E99;
+}
+
+.alert {
+	text-align: center;
+}
+
+.btn-primary{
+	margin: 10px 20px 5px 20px;
+}
+
+.btn-warning {
+	margin: 0px 20px 20px 20px;
+}
+form h1 {
+	text-align: center;
+	margin: 10px auto 0px auto;
+}
+#titini hr{
+	color: white;
+}
+#flex78 {
+	display: flex;
+	margin: 0px auto;
+	width: 619px;
+}
+#flex78 h1 {
+	margin-top: 10px;
+	margin-left: 15px; 
+	color: white;
+}
+</style>
+<body>
+	#{if flash.success}
+		<div class="alert alert-success">
+			<p>${flash.success.raw()}</p>
+		</div>
+	#{/if}
+	#{if flash.error}
+		<div class="alert alert-danger">
+			<p>${flash.error.raw()}</p>
+		</div>
+	#{/if}
+	<div id="titini">
+		<hr>
+		<div id="flex78">
+			<img src="https://i.ibb.co/x67z8GM/Requerimento-Virtual.png" width="100px">
+			<h1>REQUERIMENTO VIRTUAL</h1>
+		</div>
+		<hr>
+	</div>
+	
+	<form action="@{Login.autenticar}" method="post">
+		<h1>LOGIN</h1>
+		<input type="text" name="matricula" placeholder="Matricula" id="ipt01">
+		<input type="password" name="senha" placeholder="Senha" id="ipt02">
+		<button type="submit" class="btn btn-primary" value="logar">Enviar</button>
+		<button type="button" class="btn btn-warning" onclick="window.location.href='@{Usuarios.cadastro}'">Novo Cadastro</button>
+	</form>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+

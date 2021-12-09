@@ -1,0 +1,34 @@
+#{extends 'main.html' /} #{set title:'RV - Sugestão'/}
+
+
+<style>
+.parte03 h2 {
+	text-align: center;
+	margin-bottom: 32px;
+}
+
+#ytr {
+ 	margin-top: 50px;
+}
+</style>
+<body>
+<div class="parte03">
+	<h3>Sugestão</h3>
+	
+	
+	<ul id="ytr">
+		
+		<li>
+		#{list items:usuarios, as: 'usuario'}
+			#{if usuario?.sugestao}
+			${usuario.sugestao} |
+			#{/if}
+		#{/list}
+		</li>
+		
+	</ul>
+	
+	
+
+</div>
+</body>

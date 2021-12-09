@@ -1,0 +1,108 @@
+#{extends 'main.html' /} #{set title:'RV - Encaminhados'/}
+
+<style>
+h1 {
+	text-aligner: center;
+}
+
+#req01 {
+	text-align: center;
+	margin-top: 40px;
+}
+
+form {
+	display: flex;
+}
+
+#req02 {
+	text-align: center;
+	margin-top: 40px;
+}
+
+iframe {
+	width: 100px;
+	height: 100px;
+}
+
+h1 {
+	margin-top: 10px;
+}
+td {
+	overflow: hidden;
+	max-width: 300px;
+	word-wrap: break-word;
+}
+
+h1 {
+	margin-top: 10px;
+}
+
+table {
+	margin-top: 40px;
+} 
+
+#form51 {
+	margin-top: 40px;
+}
+
+#but2 {
+	width: 110px;
+}
+</style>
+
+<body>
+		<div id="top"></div>
+		<h3>Encaminhados</h3>
+		
+		<div id="form51">
+			<form class="form-inline my-2 my-lg-0" action="@{Seacs.encReq}">
+		      <input name="busca" class="form-control mr-sm-2" type="search" placeholder="Digite a matricula do professor" aria-label="Pesquisar">
+		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="but2"><span class="iconify" data-icon="cil:magnifying-glass"></span></button>
+		    </form>
+	    </div>
+	 <table class="table table-striped">
+			<thead>
+	
+				<tr>
+					<th scope="col">N&#186;</th>
+					<th scope="col">DATA</th>
+					<th scope="col">PROFESSOR</th>	
+					<th scope="col">ALUNO</th>	
+					<th scope="col">MOTIVO(S)</th>
+					<th scope="col">ANALISAR</th>			
+	
+				</tr>
+			</thead>
+			
+			<tbody>
+			#{list items:requerimentos, as: 'requerimento'}
+			#{if requerimento.sit == null && requerimento.matriculaProf != null}		
+				<tr>
+					<td scope="row">${requerimento.id} &#186;</td>
+					<td scope="row">${requerimento.timeStamp}</td>
+					#{list items:usuarios, as: 'usuario'}
+					#{if requerimento.matriculaProf == usuario.matricula}
+					<td scope="row">${usuario.nome} - ${requerimento.matriculaProf}</td>
+					#{/if}
+					#{/list}
+					<td scope="row">${requerimento.nome} - ${requerimento.matricula}</td>
+					
+					<td scope="row">${requerimento.motivo} #{if requerimento?.outro} - ${requerimento.outro} #{/if}
+					#{if requerimento?.motivo2}
+					(1) /
+					${requerimento.motivo2} (2) 	
+						#{if requerimento?.outro2}
+						 - ${requerimento.outro2} 
+						#{/if}					
+					#{/if}										
+						
+					 </td>
+					<td scope="row">
+						<a href="@{Seacs.edit2(requerimento.id)}"><button type="button" class="btn btn-xs btn-primary">Visualizar</button></a>
+					</td>
+				</tr>
+			#{/if}			
+			#{/list}
+			</tbody>	
+		</table> 
+</body>
