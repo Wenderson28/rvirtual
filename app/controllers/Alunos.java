@@ -58,7 +58,7 @@ public class Alunos extends Controller{
 		if(foto != null){
 			foto.renameTo(new File("./uploads/" + foto.getName()));
 			usuario.fotoperfil = foto.getName();
-			flash.success("Requerimento Anexado!");
+			flash.success("Dados atualizados com sucesso!(faça login novamente)");
 			usuario.save();
 			meuperfil();
 		}
@@ -74,7 +74,7 @@ public class Alunos extends Controller{
 		}
 			
 		usuario.save();
-		flash.success("Dados atualizados com sucesso!");
+		flash.success("Faça login no sistema novamente!");
 		meuperfil();
 	}
 	public static void newReq() {
