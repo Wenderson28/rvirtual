@@ -56,12 +56,34 @@
 #valorDigitado1 {
 	display: contents;
 }
+#faq{
+	position: fixed;
+	right: 10px;
+	margin-top: 5px;
+	color: #0D6EFD;
 
+}
+
+#faq a:visited{
+	color: #3DE6AF;
+}
+#faq a:hover{
+	color: #0D6EFD;
+}
+
+#funn{
+	display: flex;
+
+}
 </style>
 
 <body>
-	
+		<div id="funn">
 		<h3>Seja bem-vindo, ${session.get("nomeUsuario")}!</h3>
+			<div id="faq">
+			<h6><a href="@{Alunos.comoFunciona}">Como Funciona o Sistema?</span></a></h6>
+			</div>	
+		</div>
 		<div id="dei">
 			<div id="cen">
 				<div class="novo" id="novo1">
@@ -91,6 +113,8 @@
 				</div>
 			</div>
 		</div>
+	
+		
 	
 </body>
 </html>
