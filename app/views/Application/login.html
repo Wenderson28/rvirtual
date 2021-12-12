@@ -76,6 +76,18 @@ form h1 {
 	margin-left: 15px; 
 	color: white;
 }
+#fun{
+	text-align: right;
+	color: #3DE6AF;
+	margin-right: 10px;
+}
+
+#fun a:visited{
+	color: #3DE6AF;
+}
+#fun a:hover{
+	color: #0D6EFD;
+}
 </style>
 <body>
 	#{if flash.success}
@@ -94,7 +106,11 @@ form h1 {
 			<img src="https://i.ibb.co/x67z8GM/Requerimento-Virtual.png" width="100px">
 			<h1>REQUERIMENTO VIRTUAL</h1>
 		</div>
-		<hr>
+		<hr>	
+	</div>
+	<div id="fun">
+		<a href="https://www.youtube.com/watch?v=wMjxq4SkW34" target="_blank">Como funciona? Clique aqui!!</span></a>
+	
 	</div>
 	
 	<form action="@{Login.autenticar}" method="post">

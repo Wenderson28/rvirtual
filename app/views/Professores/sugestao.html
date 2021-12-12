@@ -1,4 +1,4 @@
-#{extends 'main3.html' /} #{set title:'RV - Sugestão'/}
+#{extends 'main3.html' /} #{set title:'RV - Sugestao'/}
 
 
 
@@ -44,9 +44,7 @@ form button {
 	<form action="@{Alunos.saveSugestao}" method="post">
 		<textarea name="usuario.sugestao" value="${Usuario?.sugestao}" class="form-control" id="exampleFormControlTextarea1" maxlength="300"
 			 placeholder="Deixe aqui sua sugest&atilde;o ou cr&iacute;tica!" rows= "3"></textarea>
-		
-		
-	
+
 		<button type="submit" class="btn btn-primary" id="but">Enviar</button>
 		<button type="reset" class="btn btn-danger" id="but">Apagar Tudo</button>
 	</form>

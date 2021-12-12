@@ -37,6 +37,10 @@ public class Alunos extends Controller{
 		List<Usuario> usuarios = Usuario.findAll();
 		render(usuarios);
 	}
+	public static void comoFunciona(){
+		List<Usuario> usuarios = Usuario.findAll();
+		render(usuarios);
+	}
 	
 	public static void editar(Long id) {
 		List<Usuario> usuarios = Usuario.findAll();
